@@ -26,4 +26,19 @@ td {
   width: 100px;
   height: 100px;
   cursor: pointer;
+  text-align: center;
+  font-size: 3em;
+}
+
+div.endgame {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  background-color: chocolate;
+  width: 200px;
+  color: #fff;
+  padding: 50px;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
 }
