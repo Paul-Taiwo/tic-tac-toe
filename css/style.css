@@ -1,9 +1,43 @@
-table {
-  border-collapse: collapse;
+* {
+  outline: none;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #9e3131;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  background-color: #702323;
+  color: #fff;
+  text-align: center;
+  padding: 6px;
+}
+
+div.container {
+  position: relative;
+  min-height: 500px;
+}
+
+table,
+div.endgame,
+button.replay {
   position: absolute;
   left: 50%;
-  top: 40%;
   transform: translate(-50%, -50%);
+}
+
+table {
+  border-collapse: collapse;
+  top: 38%;
+}
+
+tr td {
+  border-color: #fff;
+  color: #fff;
 }
 
 table tr:first-child td {
@@ -17,6 +51,7 @@ table tr td:first-child {
 table tr:last-child td {
   border-bottom: none;
 }
+
 table tr td:last-child {
   border-right: none;
 }
@@ -32,13 +67,41 @@ td {
 
 div.endgame {
   display: none;
-  position: absolute;
-  left: 50%;
-  top: 40%;
-  background-color: chocolate;
+  top: 38%;
+  background-color: #931212;
   width: 200px;
   color: #fff;
-  padding: 50px;
+  padding: 50px 5px;
   border-radius: 5px;
-  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 2em;
+}
+
+button.replay {
+  top: 77%;
+  padding: 13px;
+  width: 124px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #931212;
+  color: #fff;
+  font-size: 1.5em;
+  transition: .7s ease;
+}
+
+button.replay:hover {
+  background-color: #771010;
+}
+
+@media only screen and (min-width: 768px) {
+  table {
+    top: 44%;
+  }
+  div.endgame {
+    top: 44%;
+  }
+  button.replay {
+    top: 82%;
+  }
 }
