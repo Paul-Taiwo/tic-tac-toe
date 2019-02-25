@@ -42,7 +42,7 @@ function turnClick(square) {
       if (!checkTie()) {
         setTimeout(()=> {
           turn(bestSpot(), aiPlayer);
-        }, 1000);
+        }, 700);
       }
     }
   }
@@ -91,7 +91,7 @@ function declareWinner(who){
 function checkTie() {
   if (emptySquares().length === 0){
     for (var i = 0; i < cells.length; i++) {
-      cells[i].style.backgroundColor = 'green';
+      cells[i].style.backgroundColor = '#0ba90b';
       cells[i].removeEventListener('click', turnClick, false)
     }
     declareWinner('Tie Game');
@@ -103,7 +103,7 @@ function checkTie() {
 // End game
 function gameOver(gameWon) {
   for (let index of winCombos[gameWon.index]) {
-    document.getElementById(index).style.backgroundColor = gameWon.player == huPlayer ? 'blue' : 'red';
+    document.getElementById(index).style.backgroundColor = gameWon.player == huPlayer ? '#29298e' : '#f50505';
   }
 
   for (var i = 0; i < cells.length; i++){
