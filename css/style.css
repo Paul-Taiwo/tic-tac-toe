@@ -10,11 +10,11 @@ html, body {
 
 header {
   width: 100%;
-  height: 50px;
+  height: 70px;
   background-color: #702323;
   color: #fff;
   text-align: center;
-  padding: 6px;
+  padding: 20px;
 }
 
 div.container {
@@ -22,9 +22,7 @@ div.container {
   min-height: 500px;
 }
 
-table,
-div.endgame,
-button.replay {
+table, div.endgame, button.replay {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -32,7 +30,7 @@ button.replay {
 
 table {
   border-collapse: collapse;
-  top: 38%;
+  top: 40%;
 }
 
 tr td {
@@ -65,6 +63,15 @@ td {
   font-size: 3em;
 }
 
+h4.turn {
+  color: #fff;
+  width: 300px;
+  height: 50px;
+  margin: 0 auto;
+  font-size: 1.8em;
+  text-align: center;
+}
+
 div.endgame {
   display: none;
   top: 38%;
@@ -78,7 +85,7 @@ div.endgame {
 }
 
 button.replay {
-  top: 77%;
+  top: 80%;
   padding: 13px;
   width: 124px;
   border: none;

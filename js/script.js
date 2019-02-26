@@ -1,6 +1,6 @@
 // Note: Minimax algorithm according to Ahmad Abdolsaheb
 
-var origBoard;
+let origBoard;
 
 // Players
 const huPlayer = 'X';
@@ -26,11 +26,12 @@ startGame();
 // Start game function
 function startGame() {
   document.querySelector('.endgame').style.display = 'none';
+  document.getElementById('turnDisplay').innerText = 'Your turn';
 
   // Id of all squares in the table
   origBoard = Array.from(Array(9).keys());
 
-  for (var i = 0; i < cells.length; i++) {
+  for (let i = 0; i < cells.length; i++) {
     cells[i].innerHTML = '';
     cells[i].style.removeProperty('background-color');
     cells[i].addEventListener('click', turnClick, false);
@@ -51,6 +52,14 @@ function turnClick(square) {
 
 // Turn
 function turn(squareId, player) {
+
+  let turnDisp = document.getElementById('turnDisplay');
+  if (player === huPlayer) {
+    turnDisp.innerText = 'AI\'s turn';
+  } else {
+    turnDisp.innerText = 'Your turn';
+  }
+
   origBoard[squareId] = player;
   document.getElementById(squareId).innerHTML = player;
   let gameWon = checkWin(origBoard, player);
@@ -95,7 +104,7 @@ function declareWinner(who){
 // Check Tie
 function checkTie() {
   if (emptySquares().length === 0){
-    for (var i = 0; i < cells.length; i++) {
+    for (let i = 0; i < cells.length; i++) {
       cells[i].style.backgroundColor = '#0ba90b';
       cells[i].removeEventListener('click', turnClick, false)
     }
@@ -111,7 +120,7 @@ function gameOver(gameWon) {
     document.getElementById(index).style.backgroundColor = gameWon.player == huPlayer ? '#29298e' : '#f50505';
   }
 
-  for (var i = 0; i < cells.length; i++){
+  for (let i = 0; i < cells.length; i++){
     cells[i].removeEventListener('click', turnClick, false)
   }
   declareWinner(gameWon.player == huPlayer ? 'You win' : 'You Lose');
@@ -122,9 +131,9 @@ function gameOver(gameWon) {
 
 function minimax(newBoard, player) {
   // Check for available spots
-  var availSpots = emptySquares(newBoard);
+  let availSpots = emptySquares(newBoard);
 
-  // Check Win
+  // Check Win and assign a score
   if (checkWin(newBoard, player)) {
     return { score: -10 };
   } else if (checkWin(newBoard, aiPlayer)) {
@@ -133,17 +142,17 @@ function minimax(newBoard, player) {
     return { score: 0 };
   }
 
-  var moves = [];
-  for (var i = 0; i < availSpots.length; i++){
-    var move = {};
+  let moves = [];
+  for (let i = 0; i < availSpots.length; i++){
+    let move = {};
     move.index = newBoard[availSpots[i]];
     newBoard[availSpots[i]] = player;
 
     if (player == aiPlayer){
-      var result = minimax(newBoard, huPlayer);
+      let result = minimax(newBoard, huPlayer);
       move.score = result.score;
     } else {
-      var result = minimax(newBoard, aiPlayer);
+      let result = minimax(newBoard, aiPlayer);
       move.score = result.score;
     }
 
@@ -151,18 +160,18 @@ function minimax(newBoard, player) {
     moves.push(move);
   }
 
-  var bestMove;
+  let bestMove;
   if (player === aiPlayer) {
-    var bestScore = -10000;
-    for (var i = 0; i < moves.length; i++) {
+    let bestScore = -10000;
+    for (let i = 0; i < moves.length; i++) {
       if (moves[i].score > bestScore) {
         bestScore = moves[i].score;
         bestMove = i;
       }
     }
   } else {
-    var bestScore = 10000;
-    for (var i = 0; i < moves.length; i++) {
+    let bestScore = 10000;
+    for (let i = 0; i < moves.length; i++) {
       if (moves[i].score < bestScore) {
         bestScore = moves[i].score;
         bestMove = i;
